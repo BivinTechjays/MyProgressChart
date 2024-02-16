@@ -34,33 +34,27 @@ function MyProgress() {
 
 
     var chartData = [
-      { "category": "Category 1", "value": 24 },
-      { "category": "Category 1", "value": 68 },
-      { "category": "Category 2", "value": 40 },
-      { "category": "Category 3", "value": 80 },
-      { "category": "Category 4", "value": 50 },
-      { "category": "Category 5", "value": 90 },
-      { "category": "Category 6", "value": 99 },
-      { "category": "Category 7", "value": 20 },
-      { "category": "Category 8", "value": 45 },
-      { "category": "Category 9", "value": 24 },
-      { "category": "Category 10", "value": 68 },
-      { "category": "Category 11", "value": 90 },
-      { "category": "Category 12", "value": 24 },
-      { "category": "Category 13", "value": 84 },
-      { "category": "Category 14", "value": 34 },
-      { "category": "Category 15", "value": 50 },
-      { "category": "Category 16", "value": 27 },
+      { "category": "Endurance", "value": 24 },
+      { "category": "Strength", "value": 68 },
+      { "category": "agility", "value": 40 },
+      { "category": "balance", "value": 80 },
+      { "category": "enjoyment", "value": 50 },
+      { "category": "connections", "value": 90 },
+      { "category": "finances", "value": 99 },
+      { "category": "breaks", "value": 20 },
+      { "category": "consistency", "value": 45 },
+      { "category": "calm", "value": 24 },
+      { "category": "devices", "value": 68 },
+      { "category": "environment", "value": 90 },
+      { "category": "plan", "value": 24 },
+      { "category": "nourish", "value": 84 },
+      { "category": "limit", "value": 34 },
+      { "category": "hydrate", "value": 50 },
     ];
-
-
-    
 
 
     chart.innerRadius(50);
   
-
-
     // set marker series as default
     chart.defaultSeriesType('marker');
 
@@ -75,6 +69,27 @@ function MyProgress() {
     // set opacity for each color in palette
     var gridPalette = palette?.map(function (color) {
       return anychart.color.setOpacity(color, 1);
+    });
+
+    // Marker theme
+
+    anychart.appendTheme({
+      polar: {
+        defaultSeriesSettings: {
+          marker: {
+            normal: {
+              size: 6,
+              stroke: 'grey 1',
+              fill:'red'
+            },
+            hovered: {
+              size: 7,
+              stroke: 'grey 1',
+              fill:'red'
+            }
+          }
+        }
+      }
     });
 
 
