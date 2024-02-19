@@ -8,30 +8,7 @@ function MyProgress() {
     // create polar chart
     var chart = anychart.polar();
 
-    // // create data set on our data
-    // var chartData = {
-    //   // title: 'Annual revenue from products sold in the regions',
-
-    //   rows: [
-    //     ['Endurance', 25, 0],
-    //     ['Strength', 65],
-    //     ['agil', 0],
-    //     ['balance', 5],
-    //     ['enjoyment', 40],
-    //     ['connec', 50],
-    //     ['fina', 60,],
-    //     ['breaks', 20],
-    //     ['consistency', 68],
-    //     ['calm', 15,],
-    //     ['devices', 77,],
-    //     ['environment', 55,],
-    //     ['plan', 25,],
-    //     ['nourish', 70,],
-    //     ['limit', 90,],
-    //     ['hydrate', 45,],
-    //   ]
-    // };
-
+  
 
     var chartData = [
       { "category": "Endurance", "value": 24 },
@@ -59,8 +36,8 @@ function MyProgress() {
     chart.defaultSeriesType('marker');
 
 
-    var customColors = ['gray', 'blue', 'green', 'gray'];
-    // var customColors = ['#2F4059'];
+    var customColors = [ '#75B1D3', '#73B084', '#2F4059'];
+    
 
     // Replace the palette colors with your custom colors
     var palette = customColors
@@ -103,6 +80,7 @@ function MyProgress() {
     chart.xScale('ordinal');
     chart.yScale().maximum(100);
     chart.yScale().ticks().set([0, 20, 65, 85]);
+    // chart.yScale().ticks().interval(10);
 
     // disable Y-axis labels
     chart.yAxis().labels(false);
@@ -121,8 +99,8 @@ function MyProgress() {
 
     // set tooltip settings
     chart.tooltip()
-      .titleFormat('{%seriesName}')
-      .format('under ${%value}');
+      .titleFormat('{%category}')
+      .format('{%value}');
 
     // setup legend
     var legend = chart.legend();
@@ -143,9 +121,9 @@ function MyProgress() {
 
   return (
     <>
-      {/* <div className={styles.container}>  */}
+    
       <div id='container' style={{ width: '100%', height: '100vh', margin: 0, padding: 0, background: 't' }}></div>
-      {/* </div> */}
+      
     </>
   )
 }
