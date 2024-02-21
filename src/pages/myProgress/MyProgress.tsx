@@ -13,11 +13,12 @@ function MyProgress() {
       .xScale()
       .values([
         "Endurance",
-        "Strength",
+        "strength",
         "agility",
         "balance",
         "enjoyment",
         "connections",
+        "finances",
         "breaks",
         "consistency",
         "calm",
@@ -32,25 +33,72 @@ function MyProgress() {
     // set a single marker type
     chart.markerPalette(["circle"]);
 
-    const chartData = [
-      { category: "Endurance", value: 24 },
-      { category: "Strength", value: 68 },
-      { category: "agility", value: 40 },
-      { category: "balance", value: 80 },
-      { category: "enjoyment", value: 50 },
-      { category: "connections", value: 90 },
-      { category: "finances", value: 99 },
-      { category: "breaks", value: 20 },
-      { category: "consistency", value: 45 },
-      { category: "calm", value: 24 },
-      { category: "devices", value: 68 },
-      { category: "environment", value: 90 },
-      { category: "plan", value: 24 },
-      { category: "nourish", value: 84 },
-      { category: "limit", value: 34 },
-      { category: "hydrate", value: 50 },
-      { category: "hydrate", value: 70 },
-    ];
+    // const chartData = [
+    //   { category: "Endurance", value: 24 },
+    //   { category: "Endurance", value: 26 },
+    //   { category: "Strength", value: 68 },
+    //   { category: "agility", value: 40 },
+    //   { category: "balance", value: 80 },
+    //   { category: "enjoyment", value: 50 },
+    //   { category: "connections", value: 90 },
+    //   { category: "finances", value: 99 },
+    //   { category: "breaks", value: 20 },
+    //   { category: "consistency", value: 45 },
+    //   { category: "calm", value: 24 },
+    //   { category: "devices", value: 68 },
+    //   { category: "environment", value: 90 },
+    //   { category: "plan", value: 24 },
+    //   { category: "nourish", value: 84 },
+    //   { category: "limit", value: 34 },
+    //   { category: "hydrate", value: 50 },
+    //   { category: "hydrate", value: 70 },
+    // ];
+
+
+    // const sampledata = [
+    //   {
+    //     name: "Endurance",
+    //     values: { phase1: 100, phase2: 40, phase3: 80 }
+    //   },
+    //   {
+    //     name: "Strength",
+    //     values: { phase1: 95, phase2: 90, phase3: 80 }
+    //   },
+    //   // other regions go here
+    // ];
+
+
+    // const chartData = [];
+
+    // sampledata.forEach(data => {
+    //   Object.keys(data.values).forEach(phase => {
+    //     let phaseVal = data.values[phase];
+    //     // Check and cap phase value at certain thresholds
+    //     if (phase === "phase1") {
+    //       phaseVal = phaseVal > 25 ? 25 : phaseVal;
+    //     } else if (phase === "phase2") {
+    //       phaseVal = phaseVal > 50 ? 50 : phaseVal;
+    //     } else if (phase === "phase3") {
+    //       phaseVal = phaseVal > 75 ? 75 : phaseVal;
+    //     }
+    //     // Push an object for each phase
+    //     chartData.push({ category: data.name, value: phaseVal });
+    //   });
+    // });
+
+    const data = {
+      "hydrate": 50,
+      "nourish": 86.67,
+      "consistency": 86.67,
+      "strength": 73.33,
+      "enjoyment": 47.5
+  };
+  
+  const chartData = Object.keys(data).map(category => ({ category, value: data[category] }));
+  
+  
+  chart.background().fill("#132238"); 
+
 
     let minValue = Math.min.apply(
       null,
@@ -107,7 +155,16 @@ function MyProgress() {
       },
     });
 
-    chart.xAxis().stroke({ dash: "2 2" });
+
+    chart.yGrid().stroke({
+      color: "#141D2A",
+      thickness: 10,
+      opacity: 1,
+    });
+
+
+
+    chart.xAxis().stroke({ color: "white", dash: "2 2" }); 
     // chart.yScale().ticks().interval([20,30,40])
 
     // set scales settings
@@ -116,7 +173,7 @@ function MyProgress() {
     // chart.yScale().maximum(maxValue);
     // chart.yScale().minimum(minValue);
 
-    chart.yScale().ticks().set([0, 20, 65, 85]);
+    chart.yScale().ticks().set([0, 25, 50, 75]);
     // chart.yScale().ticks().set([0, maxValue * 0.25, maxValue*0.60, maxValue * 0.75, maxValue])
 
     // disable Y-axis labels
